@@ -72,6 +72,8 @@ wrapWS = (url) ->
           'data': message.utf8Data
         }
         ws.onmessage(event)
+  socket.on 'connectFailed', (conn) ->
+    ws.onclose?()
 
   socket.connect url
   return ws
